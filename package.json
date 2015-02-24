@@ -1,0 +1,15 @@
+{
+  "name": "video_games_db",
+  "version": "1.0.0",
+  "description": "A video games database of games I have played",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Gottfried",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.0",
+    "request": "^2.53.0"
+  }
+}
