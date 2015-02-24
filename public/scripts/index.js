@@ -1,5 +1,6 @@
 var resultsBox = document.getElementById('results');
 var searchBar = document.getElementsByTagName('input')[0];
+var template = _.template(document.getElementById('gameTemplate').innerHTML);
 
 var getResults = function() {
   resultsBox.innerHTML = '';
@@ -8,7 +9,7 @@ var getResults = function() {
   xhr.addEventListener('load', function() {
     var results = JSON.parse(xhr.responseText);
     results.results.forEach(function(r) {
-      resultsBox.innerHTML += r.name + "<br />";
+      resultsBox.innerHTML += template({name: r.name, image_url: r.image.thumb_url});
     });
   });
 

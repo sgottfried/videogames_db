@@ -2,3 +2,16 @@ input {
   margin-left: 600px;
   margin-top: 50px;
 }
+
+#results { 
+  margin-top: 3em;
+  margin-left: 450px;
+  width: 600px;
+  list-style-type: none;
+}
+
+.vg-thumbnail { 
+  margin-left: 2em;
+  margin-bottom: 3em;
+  height: 80px;
+}

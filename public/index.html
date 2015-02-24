@@ -5,13 +5,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
     <link rel = "stylesheet" href = "/stylesheets/styles.css">
+    <script src = "http://underscorejs.org/underscore-min.js"></script>
   </head>
   <body>
     <header>
       <h1 class = "text-center">Video Game DB</h1>
     </header>
     <input type = "text" size = "100" />
-    <div id = "results"></div>
+    <ul id = "results" class = "text-right"></ul>
+    <script type = "text/template" id = "gameTemplate">
+<li><%= name %><img src = "<%= image_url %>" class = "vg-thumbnail" /></li>
+    </script>
     <script src = "/scripts/index.js"></script>
   </body>
 </html>
