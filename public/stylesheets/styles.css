@@ -1,11 +1,11 @@
 input { 
-  margin-left: 600px;
+  margin-left: 400px;
   margin-top: 50px;
 }
 
 #results { 
   margin-top: 3em;
-  margin-left: 450px;
+  margin-left: 250px;
   width: 600px;
   list-style-type: none;
 }

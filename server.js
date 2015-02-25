@@ -2,16 +2,14 @@ var secrets = require('./secrets.json');
 var request = require('request');
 var express = require('express');
 var app = express();
+var API = require('./lib/bomb_api');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/search', function(req, res) {
   var api_key = secrets['api_key']; 
-  var fields = 'name,id,image,platforms';
-  var query = req.query.query;
-  var url = 'http://www.giantbomb.com/api/search/?api_key=' + api_key + '&format=json&query=' + query + '&field_list=' + fields;
-  
-  request(url, function(error, response, body) {
-    res.json(JSON.parse(body));
+  var api = new API(api_key);
+  api.search(req.query.query, function(body) {
+    res.send(body);
   });
 });
 
