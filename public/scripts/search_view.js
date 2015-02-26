@@ -8,10 +8,10 @@ define(function() {
     if (searchTimeout != undefined) {
       clearTimeout(searchTimeout);
     }
-    searchTimeout = setTimeout(function() { getResults(searchBar.value)}, 330);
+    searchTimeout = setTimeout(function() { searchView.getResults(searchBar.value)}, 330);
   });
 
-  return {
+  searchView = {
     getResults: function(query) {
       resultsBox.innerHTML = '';
       var xhr = new XMLHttpRequest();
@@ -26,5 +26,7 @@ define(function() {
       xhr.send();
     }
   }
+
+  return searchView;
 });
 

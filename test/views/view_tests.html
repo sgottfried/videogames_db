@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Search View Tests</title>
+    <link rel = "stylesheet" href = "vendor/stylesheets/mocha.css" />
+  </head>
+  <body>
+    <div id = "mocha"></div>
+    <div id = "testArea">
+      <input /><ul id = "results"></ul>
+    </div>
+    <script type = "text/template" id = "gameTemplate">
+  <li><%= name %><img src = "<%= image_url %>"></li>
+  </script>
+
+    <script data-main = "view_test_suite.js" src = "vendor/javascripts/require.js" ></script>
+  </body>
+</html>
