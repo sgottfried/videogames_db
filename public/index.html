@@ -1,10 +1,11 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
     <link rel = "stylesheet" href = "/stylesheets/styles.css">
+    <script src = "/vendor/scripts/underscore.js"></script>
+    <script src = "/scripts/search_view.js"></script>
   </head>
   <body>
     <header>
@@ -13,8 +14,10 @@
     <input type = "text" size = "100" />
     <ul id = "results" class = "text-right"></ul>
     <script type = "text/template" id = "gameTemplate">
-<li><%= name %><img src = "<%= image_url %>" class = "vg-thumbnail" /></li>
+      <li><%= name %><img src = "<%= image_url %>" class = "vg-thumbnail" /></li>
     </script>
-    <script data-main = "/scripts/videogames_db_requires.js" src = "vendor/scripts/require.js" ></script>
+    <script>
+      sv = new SearchView();
+    </script>
   </body>
 </html>
