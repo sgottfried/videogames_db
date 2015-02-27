@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "mocha-phantomjs": "*",
+    "chai": "^2.1.0",
     "nock": "^0.59.1"
   }
 }
