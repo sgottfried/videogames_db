@@ -13,7 +13,7 @@ var testGameIsNotValid = function(game, errorMessage, done) {
       done();
     }
     else {
-      throw new Error("Did not fail validation");
+      throw new Error("Did not fail validation: " + errorMessage);
     }
   }).catch(function (err) {
     done(err);
@@ -29,6 +29,14 @@ describe("Game", function() {
     });
     it("cannot be empty", function(done) {
       var game = Game.build({name: ""});
+      var errorMessage = "Validation notEmpty failed";
+      testGameIsNotValid(game, errorMessage, done);
+    });
+  });
+
+  describe("#giantBombApiId", function() {
+    it("cannot be empty", function(done) {
+      var game = Game.build({name: "zelda", giantBombApiId: ""});
       var errorMessage = "Validation notEmpty failed";
       testGameIsNotValid(game, errorMessage, done);
     });

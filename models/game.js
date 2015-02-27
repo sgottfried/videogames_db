@@ -9,7 +9,12 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-      giantBombApiId: DataTypes.STRING,
+      giantBombApiId: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: true
+        }
+      }
 
   });
 
