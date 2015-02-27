@@ -4,7 +4,7 @@
   "description": "A video games database of games I have played",
   "main": "server.js",
   "scripts": {
-    "test": "mocha && mocha-phantomjs test/views/view_tests.html"
+    "test": "mocha test/api test/models && mocha-phantomjs test/views/view_tests.html"
   },
   "author": "Sam Gottfried",
   "license": "ISC",
