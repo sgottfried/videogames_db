@@ -3,7 +3,7 @@ var models = require('../../models');
 var Game = models.Game;
 var expect = require('chai').expect;
 
-process.env.NODE_ENV = "test";
+process.env.NODE_ENV = 'test';
 
 var testGameIsNotValid = function(game, errorMessage, done) {
   game.validate().then(function(error) {
@@ -13,31 +13,31 @@ var testGameIsNotValid = function(game, errorMessage, done) {
       done();
     }
     else {
-      throw new Error("Did not fail validation: " + errorMessage);
+      throw new Error('Did not fail validation: ' + errorMessage);
     }
   }).catch(function (err) {
     done(err);
   });
 };
 
-describe("Game", function() {
-  describe("#name", function() {
-    it("cannot be null", function(done) {
+describe('Game', function() {
+  describe('#name', function() {
+    it('cannot be null', function(done) {
       var game = Game.build({});
-      var errorMessage = "name cannot be null";
+      var errorMessage = 'name cannot be null';
       testGameIsNotValid(game, errorMessage, done);
     });
-    it("cannot be empty", function(done) {
-      var game = Game.build({name: ""});
-      var errorMessage = "Validation notEmpty failed";
+    it('cannot be empty', function(done) {
+      var game = Game.build({name: ''});
+      var errorMessage = 'Validation notEmpty failed';
       testGameIsNotValid(game, errorMessage, done);
     });
   });
 
-  describe("#giantBombApiId", function() {
-    it("cannot be empty", function(done) {
-      var game = Game.build({name: "zelda", giantBombApiId: ""});
-      var errorMessage = "Validation notEmpty failed";
+  describe('#giantBombApiId', function() {
+    it('cannot be empty', function(done) {
+      var game = Game.build({name: 'zelda', giantBombApiId: ''});
+      var errorMessage = 'Validation notEmpty failed';
       testGameIsNotValid(game, errorMessage, done);
     });
   });
