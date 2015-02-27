@@ -24,7 +24,8 @@
     <script src = "../../public/js/search_view.js"></script>
     <script src = "search_view_tests.js"></script>
     <script>
-      mocha.run();
+      if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+      else { mocha.run(); }
     </script>
   </body>
 </html>

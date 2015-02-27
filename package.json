@@ -4,13 +4,16 @@
   "description": "A video games database of games I have played",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha && mocha-phantomjs test/views/view_tests.html"
   },
   "author": "Sam Gottfried",
   "license": "ISC",
   "dependencies": {
     "express": "^4.12.0",
-    "nock": "^0.59.1",
     "request": "^2.53.0"
+  },
+  "devDependencies": {
+    "mocha-phantomjs": "*",
+    "nock": "^0.59.1"
   }
 }
