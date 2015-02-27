@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "games",
+    "dialect": "sqlite",
+    "storage": "db/games.development.sqlite"
+  },
+  "test": {
+    "database": "games",
+    "dialect": "sqlite",
+    "storage": "db/games.test.sqlite"
+  },
+  "production": {
+    "database": "games",
+    "dialect": "sqlite",
+    "storage": "db/games.sqlite"
+  }
+}
