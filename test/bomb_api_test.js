@@ -3,6 +3,7 @@ var API = require('../lib/bomb_api');
 
 var bombApi;
 var nock = require('nock');
+var expect = require('chai').expect;
 
 describe('bombApi', function() {
   beforeEach(function() {
@@ -10,7 +11,7 @@ describe('bombApi', function() {
   });
 
   it('should have an api key', function() {
-    assert.equal('testkey', bombApi.apiKey);
+    expect(bombApi.apiKey).to.equal('testkey');
   });
 
   describe('#search', function() {
@@ -22,7 +23,7 @@ describe('bombApi', function() {
     
     it('should search the GiantBomb API for a game and execute the callback', function(done) {
       bombApi.search('zelda', function(body) {
-        assert.equal(JSON.stringify({results:[{name: 'the Legend of Zelda'}]}), body); 
+        expect(body).to.equal(JSON.stringify({results:[{name: 'the Legend of Zelda'}]}));
         done();
       });
    });
