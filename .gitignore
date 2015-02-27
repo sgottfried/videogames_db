@@ -1,3 +1,4 @@
 secrets.json
 *.sw*
 node_modules/
+db/*.sqlite
