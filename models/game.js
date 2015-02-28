@@ -9,13 +9,19 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-      giantBombApiId: {
-        type: DataTypes.STRING,
-        validate: {
-          notEmpty: true
-        }
+    giantBombApiId: {
+      type: DataTypes.STRING,
+      validate: {
+      notEmpty: true
       }
-
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+        isUrl: true
+      }
+    }
   });
 
   return Game;

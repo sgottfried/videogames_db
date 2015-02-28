@@ -5,10 +5,10 @@ var expect = require('chai').expect;
 
 process.env.NODE_ENV = 'test';
 
-var testGameIsNotValid = function(game, errorMessage, done) {
+var testGameIsNotValid = function(game, field, errorMessage, done) {
   game.validate().then(function(error) {
     if(error) {
-      expect(error.errors.length).to.equal(1);
+      expect(error.errors[0].path).to.equal(field);
       expect(error.errors[0].message).to.equal(errorMessage);
       done();
     }
@@ -22,23 +22,37 @@ var testGameIsNotValid = function(game, errorMessage, done) {
 
 describe('Game', function() {
   describe('#name', function() {
-    it('cannot be null', function(done) {
+    var field = 'name';
+
+    it('should not be null', function(done) {
       var game = Game.build({});
       var errorMessage = 'name cannot be null';
-      testGameIsNotValid(game, errorMessage, done);
+      testGameIsNotValid(game, field, errorMessage, done);
     });
-    it('cannot be empty', function(done) {
+    it('should not be empty', function(done) {
       var game = Game.build({name: ''});
       var errorMessage = 'Validation notEmpty failed';
-      testGameIsNotValid(game, errorMessage, done);
+      testGameIsNotValid(game, field, errorMessage, done);
     });
   });
 
   describe('#giantBombApiId', function() {
-    it('cannot be empty', function(done) {
+    var field = 'giantBombApiId';
+
+    it('should not be empty', function(done) {
       var game = Game.build({name: 'zelda', giantBombApiId: ''});
       var errorMessage = 'Validation notEmpty failed';
-      testGameIsNotValid(game, errorMessage, done);
+      testGameIsNotValid(game, field, errorMessage, done);
+    });
+  });
+
+  describe('#imageUrl', function() {
+    var field = 'imageUrl';
+    
+    it('should be a url', function(done) {
+      var game = Game.build({name: 'zelda', imageUrl: 'notUrl'});
+      var errorMessage = 'Validation isUrl failed';
+      testGameIsNotValid(game, field, errorMessage, done);
     });
   });
 });
