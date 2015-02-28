@@ -9,9 +9,6 @@ describe('SearchView', function() {
   before(function() {
     testArea = document.getElementById('testArea');
     testArea.innerHTML = '<input /><ul id = "results"></ul>';
-    testArea.innerHTML += '<script type = "text/template" id = "gameTemplate">' +
-                          '<li><%= name %><img src = "<%= image_url %>"></li>' +
-                          '</script>';
 
     searchView = new SearchView();
   });
@@ -46,7 +43,18 @@ describe('SearchView', function() {
       server.respond();
 
       var results = document.getElementById('results');
-      expect(results.innerHTML).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png"></li>');
+      expect(results.innerHTML).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="vg-thumbnail"><button class="btn btn-success">+</button></li>');
+    });
+  });
+
+  describe('#addGame', function() {
+    it('should make a request to /games', function() {
+      var game = {name: "The Legend of Zelda", giantBombApiId: 1};
+      searchView.addGame(game);
+
+      expect(requests.length).to.equal(1);
+      expect(requests[0].url).to.equal('/games');
+      expect(requests[0].requestBody).to.equal(game);
     });
   });
 

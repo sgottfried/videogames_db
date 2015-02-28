@@ -1,7 +1,9 @@
 var SearchView = function() {
   var resultsBox = document.getElementById('results');
   var searchBar = document.getElementsByTagName('input')[0];
-  var template = _.template(document.getElementById('gameTemplate').innerHTML);
+  var template = _.template('<li><%= name %><img src = "<%= image_url %>" class = "vg-thumbnail">' +
+      '<button class = "btn btn-success">+</button>' + 
+      '</li>');
 
   var searchTimeout;
 
@@ -17,6 +19,12 @@ var SearchView = function() {
     });
 
     xhr.send();
+  };
+
+  this.addGame = function(game) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/games');
+    xhr.send(game);
   }
 
   var that = this;
