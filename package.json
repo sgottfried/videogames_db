@@ -13,12 +13,13 @@
     "express": "^4.12.0",
     "request": "^2.53.0",
     "sequelize": "^2.0.3",
-    "sinon": "^1.12.2",
     "sqlite3": "^3.0.5"
   },
   "devDependencies": {
     "mocha-phantomjs": "*",
     "chai": "^2.1.0",
-    "nock": "^0.59.1"
+    "nock": "^0.59.1",
+    "sinon": "^1.12.2",
+    "when": "^3.7.2"
   }
 }
