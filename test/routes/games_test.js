@@ -10,8 +10,8 @@ var game, req;
 describe('Game Routes', function() {
   describe('POST games', function() {
     before(function() {
-      game = {name: "the Legend of Zelda", giantBambApiId: '1'};
-      req = {body: {name: "the Legend of Zelda", giantBombApiId: '1'}};
+      game = {name: "the Legend of Zelda", giantBambApiId: '1', imageUrl: 'http://test.png'};
+      req = {body: {name: "the Legend of Zelda", giantBombApiId: '1', imageUrl: 'http://test.png'}};
     });
 
     it('should persist a game', function(done) {

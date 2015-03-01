@@ -6,8 +6,9 @@ var Routes = {
   createGame: function(req, res) {
     var name = req.body.name;
     var giantBombApiId = req.body.giantBombApiId;
+    var imageUrl = req.body.imageUrl;
 
-    Game.create({name: name, giantBombApiId: giantBombApiId}).then(function(game) {
+    Game.create({name: name, giantBombApiId: giantBombApiId, imageUrl: imageUrl}).then(function(game) {
       res.json(game);
     });
   }
