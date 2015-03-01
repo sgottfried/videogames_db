@@ -10,9 +10,12 @@ var SearchView = function() {
   var searchView = this;
   this.getResults = function(query) {
     resultsBox.innerHTML = '';
+    var spinner = new Spinner().spin();
+    resultsBox.appendChild(spinner.el);
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/search?query=' + query);
     xhr.addEventListener('load', function() {
+      spinner.stop();
       var results = JSON.parse(xhr.responseText);
       results.results.forEach(function(r) {
         var id = r.id;
