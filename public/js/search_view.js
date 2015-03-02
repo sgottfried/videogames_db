@@ -1,7 +1,7 @@
 var SearchView = function() {
   var resultsBox = document.getElementById('results');
   var searchBar = document.getElementsByTagName('input')[0];
-  var template = _.template('<li><%= name %><img src = "<%= image_url %>" class = "vg-thumbnail">' +
+  var template = _.template('<li><%= name %><img src = "<%= thumb_url %>" class = "vg-thumbnail">' +
       '<button class = "btn btn-success add" id = "add<%= id %>">+</button>' + 
       '</li>');
 
@@ -22,9 +22,12 @@ var SearchView = function() {
         var name = r.name;
         var image = r.image;
         var image_url;
-        if(image) { image_url = image.thumb_url;};
+        if(image) { 
+          image_url = image.small_url;
+          thumb_url = image.thumb_url;
+        }
         
-        resultsBox.innerHTML += template({name: name, image_url: image_url, id: id});
+        resultsBox.innerHTML += template({name: name, image_url: image_url, thumb_url: thumb_url, id: id});
         $('body').on('click', '#add' + id, function() {
           searchView.addGame({name: name, imageUrl: image_url, giantBombApiId: id});
           $('#add' + id).remove();
