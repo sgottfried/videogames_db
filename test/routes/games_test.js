@@ -5,6 +5,8 @@ var expect = chai.expect;
 var sinon = require('sinon');
 var when = require('when');
 
+var Game = require('../../models').Game;
+
 var zelda, mario, games;
 var req, res;
 
@@ -27,7 +29,7 @@ describe('Game Routes', function() {
       res = {json: function() {}};
      
       gameRoutes.createGame(req, res);
-      gameRoutes.Games.count().then(function(count) {
+      Game.count().then(function(count) {
         expect(count).to.equal(1);
         expect(req.session.games[0]).to.deep.equal(zelda);
         done();
@@ -42,7 +44,7 @@ describe('Game Routes', function() {
         done();
       }};
 
-      sinon.stub(gameRoutes.Games, 'create').returns(when(zelda));
+      sinon.stub(Game, 'create').returns(when(zelda));
       gameRoutes.createGame(req, res);
     });
   });
@@ -58,13 +60,13 @@ describe('Game Routes', function() {
         done();
       }};
 
-      findAllStub = sinon.stub(gameRoutes.Games, 'findAll').returns(when(games));
+      findAllStub = sinon.stub(Game, 'findAll').returns(when(games));
       gameRoutes.showGames(req, res);
     });
 
 
     it('should use the games in the session if it exists', function(done) {
-      var gameApiMock = sinon.mock(gameRoutes.Games);
+      var gameApiMock = sinon.mock(Game);
       gameApiMock.expects('findAll').never();
 
       req = { session: {games: games}};
@@ -81,6 +83,6 @@ describe('Game Routes', function() {
   });
 
   afterEach(function() {
-    gameRoutes.Games.destroy({where: {id: {$gt: 0}}});
+    Game.destroy({where: {id: {$gt: 0}}});
   });
 });

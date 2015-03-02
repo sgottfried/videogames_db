@@ -2,8 +2,7 @@ var models = require('../models');
 var Game = models.Game;
 
 var Routes = {
-  Games: Game,
-
+  
   // POST /games
   createGame: function(req, res) {
     var name = req.body.name;
