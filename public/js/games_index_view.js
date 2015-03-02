@@ -15,10 +15,10 @@ var GamesIndexView = function() {
         if(columnCounter == 0) { 
           rowCounter += 1;
           container = $('#container');
-          container.html('<div id = "row' + rowCounter + '" class = "row"></div>'); 
+          container.append('<div id = "row' + rowCounter + '" class = "row"></div>'); 
         }
 
-        $('#row' + rowCounter).html(indexTemplate({image_url: g.imageUrl}));
+        $('#row' + rowCounter).append(indexTemplate({image_url: g.imageUrl}));
         columnCounter += 1;
 
         if(columnCounter === 3) { columnCounter = 0; }
