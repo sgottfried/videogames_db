@@ -24,12 +24,12 @@ var Routes = {
   // Get /games
   showGames: function(req, res) { 
     if(req.session && req.session.games) {
-      res.json(JSON.stringify(req.session.games));
+      res.json(req.session.games);
     }
     else {
       Game.findAll().then(function(games) {
         req.session.games = games;
-        res.json(JSON.stringify(games));
+        res.json(games);
       });
     }
   }

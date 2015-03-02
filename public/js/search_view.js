@@ -1,5 +1,12 @@
 var SearchView = function() {
-  var resultsBox = document.getElementById('results');
+var gamesIndexView;
+
+  var myGamesLink = document.getElementById('myGames');
+  myGamesLink.addEventListener('click', function() {
+    gamesIndexView = new GamesIndexView();
+  });
+  
+  var gamesBox = document.getElementById('gamesBox');
   var searchBar = document.getElementsByTagName('input')[0];
   var template = _.template('<li><%= name %><img src = "<%= thumb_url %>" class = "vg-thumbnail">' +
       '<button class = "btn btn-success add" id = "add<%= id %>">+</button>' + 
@@ -9,9 +16,10 @@ var SearchView = function() {
 
   var searchView = this;
   this.getResults = function(query) {
-    resultsBox.innerHTML = '';
+    gamesBox.setAttribute('class', 'text-right');
+    gamesBox.innerHTML = '';
     var spinner = new Spinner().spin();
-    resultsBox.appendChild(spinner.el);
+    gamesBox.appendChild(spinner.el);
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/search?query=' + query);
     xhr.addEventListener('load', function() {
@@ -27,10 +35,10 @@ var SearchView = function() {
           thumb_url = image.thumb_url;
         }
         
-        resultsBox.innerHTML += template({name: name, image_url: image_url, thumb_url: thumb_url, id: id});
+        gamesBox.innerHTML += template({name: name, image_url: image_url, thumb_url: thumb_url, id: id});
         $('body').on('click', '#add' + id, function() {
           searchView.addGame({name: name, imageUrl: image_url, giantBombApiId: id});
-          $('#add' + id).remove();
+          gamesIndexView = new GamesIndexView();
         });
       });
     });

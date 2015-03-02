@@ -1,9 +1,9 @@
-var searchView, testArea, server, xhr, requests;
+var searchView, gamesBox, server, xhr, requests;
 
 describe('SearchView', function() {
   before(function() {
-    testArea = document.getElementById('testArea');
-    testArea.innerHTML = '<input /><ul id = "results"></ul>';
+    gamesBox = document.getElementById('gamesBox');
+    gamesBox.innerHTML = '<input /><ul id = "gamesBox"></ul>';
 
     searchView = new SearchView();
   });
@@ -11,7 +11,6 @@ describe('SearchView', function() {
   beforeEach(function() {
     requests = [];
     xhr = sinon.useFakeXMLHttpRequest();
-    requests = [];
     xhr.onCreate = function(xhr) {
       requests.push(xhr);
     };
@@ -37,8 +36,8 @@ describe('SearchView', function() {
       searchView.getResults('zelda');
       server.respond();
 
-      var results = document.getElementById('results');
-      expect(results.innerHTML).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="vg-thumbnail"><button class="btn btn-success add" id="add1">+</button></li>');
+      var gamesBox = document.getElementById('gamesBox');
+      expect(gamesBox.innerHTML).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="vg-thumbnail"><button class="btn btn-success add" id="add1">+</button></li>');
     });
   });
 
@@ -53,9 +52,8 @@ describe('SearchView', function() {
     });
   });
 
-  after(function() {
+  afterEach(function() {
     xhr.restore();
-    server.restore;
-    testArea.innerHTML = '';
+    if(server) { server.restore() };
   });
 });

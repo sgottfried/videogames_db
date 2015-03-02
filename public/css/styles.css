@@ -1,14 +1,17 @@
 input { 
   margin-left: 400px;
-  margin-top: 50px;
 }
 
-#results { 
+#gamesBox { 
   margin-top: 3em;
   margin-left: 250px;
   width: 600px;
   list-style-type: none;
   line-height: 2em;
+}
+
+.game-box-image {
+  height: 250px;
 }
 
 .vg-thumbnail { 

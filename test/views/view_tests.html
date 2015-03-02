@@ -4,6 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel = "stylesheet" href = "vendor/css/mocha.css" />
 
+    <script src = "vendor/js/jquery-2.1.3.min.js"></script>
     <script src = "vendor/js/underscore.js"></script>
     <script src = "vendor/js/spin.min.js"></script>
     <script src = "vendor/js/mocha.js"></script>
@@ -12,14 +13,17 @@
   </head>
   <body>
     <div id = "mocha"></div>
-    <div id = "testArea">
+    <a id = "myGames"></a>
+    <div id = "gamesBox">
     </div>
     <script>
       mocha.setup('bdd');
       var expect = chai.expect;
     </script>
     <script src = "../../public/js/search_view.js"></script>
+    <script src = "../../public/js/games_index_view.js"></script>
     <script src = "search_view_tests.js"></script>
+    <script src = "games_index_view_tests.js"></script>
     <script>
       if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
       else { mocha.run(); }

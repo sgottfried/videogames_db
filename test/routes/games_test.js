@@ -54,7 +54,7 @@ describe('Game Routes', function() {
       var findAllStub;
       req = {session: {}};
       res = {json: function(gamesJSON) {
-        expect(gamesJSON).to.equal(JSON.stringify(games));
+        expect(gamesJSON).to.equal(games);
         expect(req.session.games).to.equal(games);
         findAllStub.restore();
         done();
@@ -72,7 +72,7 @@ describe('Game Routes', function() {
       req = { session: {games: games}};
       res = {json: function(gamesJSON) {
         gameApiMock.verify();
-        expect(gamesJSON).to.equal(JSON.stringify(games));
+        expect(gamesJSON).to.equal(games);
         gameApiMock.restore();
         done();
       }};
