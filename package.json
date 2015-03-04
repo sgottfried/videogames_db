@@ -17,6 +17,7 @@
     "sqlite3": "^3.0.5"
   },
   "devDependencies": {
+    "mocha": "^2.1.0",
     "mocha-phantomjs": "*",
     "chai": "^2.1.0",
     "nock": "^0.59.1",
