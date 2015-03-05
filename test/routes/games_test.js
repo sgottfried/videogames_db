@@ -49,10 +49,18 @@ describe('Game Routes', function() {
     });
 
     it('should respond with json of any errors that occur', function(done) {
-      res = {json: function(errors) {
-        expect(errors[0].message).to.equal('Game already added.');
-        done();
-      }};
+      res = {
+        status: function(s) {
+          if(s === 400) {
+            return this;
+          }
+        },
+      
+        json: function(errors) {
+          expect(errors[0].message).to.equal('Game already added.');
+          done();
+        }
+      };
 
       Game.create(zelda).then(function() {
         gameRoutes.createGame(req, res);

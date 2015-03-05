@@ -12,7 +12,7 @@ var Routes = {
     Game.create({name: name, giantBombApiId: giantBombApiId, imageUrl: imageUrl}).then(function(game) {
       res.json(game);
     }).catch(function(err) {
-      return res.json(err.errors);
+      return res.status(400).json(err.errors);
     });
   },
  
