@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
           var self = this;
           Game.find({where: { giantBombApiId: value }}).then(function(game) {
             if (game && self.id !== game.id) {
-              return next("giantBombApiId is already being used.");
+              return next("Game already added.");
             }
             return next();
           }).catch(function (err) {

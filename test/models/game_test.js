@@ -48,7 +48,7 @@ describe('Game', function() {
     it('should not allow duplicates', function(done) {
       Game.create({name: 'zelda', giantBombApiId: '1'}).then(function() {
         var duplicateGame = Game.build({name: 'duplicate', giantBombApiId: '1'});
-        var errorMessage = 'giantBombApiId is already being used.';
+        var errorMessage = 'Game already added.';
         testGameIsNotValid(duplicateGame, field, errorMessage, done);
       });
     });

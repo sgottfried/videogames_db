@@ -38,13 +38,25 @@ describe('Game Routes', function() {
     });
 
     it('should respond with json of the new post', function(done) {
+      var gameCreateStub;
       res = {json: function(gameJSON) {
-        expect(gameJSON).to.equal(zelda);
+        gameCreateStub.restore();
         done();
       }};
 
-      sinon.stub(Game, 'create').returns(when(zelda));
+      gameCreateStub = sinon.stub(Game, 'create').returns(when(zelda));
       gameRoutes.createGame(req, res);
+    });
+
+    it('should respond with json of any errors that occur', function(done) {
+      res = {json: function(errors) {
+        expect(errors[0].message).to.equal('Game already added.');
+        done();
+      }};
+
+      Game.create(zelda).then(function() {
+        gameRoutes.createGame(req, res);
+      });
     });
   });
 
