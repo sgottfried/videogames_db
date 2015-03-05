@@ -1,3 +1,5 @@
+var GamesIndexView = require('../../public/js/games_index_view');
+
 var indexView, xhr, server, requests;
 
 describe('GamesIndexView', function() {
@@ -42,5 +44,3 @@ describe('GamesIndexView', function() {
     gamesBox.innerHTML = '';
   });
 });
-    
-
