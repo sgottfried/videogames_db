@@ -23,16 +23,18 @@ describe('Game Routes', function() {
     });
 
     it('should persist a game', function(done) {
-      res = {json: function() {}};
+      res = {
+        json: function() {
+        Game.count().then(function(count) {
+          expect(count).to.equal(1);
+          done();
+        }).catch(function(err) {
+          done(err);
+        });
+        }
+      };
      
       gameRoutes.createGame(req, res);
-
-      Game.count().then(function(count) {
-        expect(count).to.equal(1);
-        done();
-      }).catch(function(err) {
-        done(err);
-      });
     });
 
     it('should respond with json of the new post', function(done) {
