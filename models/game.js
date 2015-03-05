@@ -11,8 +11,20 @@ module.exports = function(sequelize, DataTypes) {
     },
     giantBombApiId: {
       type: DataTypes.STRING,
+      unique: true,
       validate: {
-      notEmpty: true
+        notEmpty: true,
+        isUnique: function (value, next) {
+          var that = this;
+          Game.find({where: { giantBombApiId: value}}).then(function(game) {
+            if (game && that.id !== game.id) {
+              return next('giantBombApiId is already saved.');
+            }
+            return next();
+          }).catch(function (err) {
+            return next(err);
+          });
+        }
       }
     },
     imageUrl: {

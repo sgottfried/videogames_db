@@ -44,6 +44,18 @@ describe('Game', function() {
       var errorMessage = 'Validation notEmpty failed';
       testGameIsNotValid(game, field, errorMessage, done);
     });
+
+    it('must be unique', function(done) {
+      Game.create({name: 'zelda', giantBombApiId: '1'}).then(function() {
+        var duplicateGame = Game.build({name: 'zelda duplicate', giantBombApiId: '1'});
+        var errorMessage = 'giantBombApiId is already saved.';
+        testGameIsNotValid(duplicateGame, field, errorMessage, done);
+      });
+    });
+
+    after(function() {
+      Game.destroy({where: {id: {$gt: 0}}});
+    });
   });
 
   describe('#imageUrl', function() {
