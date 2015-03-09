@@ -28,8 +28,8 @@ describe('GamesIndexView', function() {
       new GamesIndexView();
 
       server.respond();
-      var row = document.getElementById('row1');
-      expect(row.innerHTML).to.equal('<div class="col-md-3"><img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="game-box-image"></div>');
+      var row = $('#row1');
+      expect(row.html()).to.equal('<div class="col-md-3"><img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="game-box-image"></div>');
     });
   });
 
@@ -39,8 +39,6 @@ describe('GamesIndexView', function() {
   });
 
   after(function() {
-    gamesBox.innerHTML = '';
+    gamesBox.html('');
   });
 });
-    
-

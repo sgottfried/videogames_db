@@ -2,8 +2,8 @@ var searchView, gamesBox, server, xhr, requests;
 
 describe('SearchView', function() {
   before(function() {
-    gamesBox = document.getElementById('gamesBox');
-    gamesBox.innerHTML = '<input /><ul id = "gamesBox"></ul>';
+    gamesBox = $('#gamesBox');
+    gamesBox.html('<input /><ul id = "gamesBox"></ul>');
 
     searchView = new SearchView();
   });
@@ -36,8 +36,8 @@ describe('SearchView', function() {
       searchView.getResults('zelda');
       server.respond();
 
-      var gamesBox = document.getElementById('gamesBox');
-      expect(gamesBox.innerHTML).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="vg-thumbnail"><button class="btn btn-success add" id="add1">+</button></li>');
+      var gamesBox = $('#gamesBox');
+      expect(gamesBox.html()).to.equal('<li>The Legend of Zelda<img src="http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png" class="vg-thumbnail"><button class="btn btn-success add" id="add1">+</button></li>');
     });
   });
 
