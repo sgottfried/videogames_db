@@ -1,3 +1,5 @@
+var SearchView = require('../../public/js/search_view');
+
 var searchView, gamesBox, server, xhr, requests;
 
 describe('SearchView', function() {
@@ -32,7 +34,7 @@ describe('SearchView', function() {
           {"Content-Type": "application/json"},
           JSON.stringify({results: [{name: "The Legend of Zelda", image: { thumb_url: "http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png"}, id: "1"}]})
         ]);
-      
+
       searchView.getResults('zelda');
       server.respond();
 

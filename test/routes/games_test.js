@@ -19,65 +19,66 @@ describe('Game Routes', function() {
   
   describe('#createGame', function() {
     before(function() {
-      req = {
-        body: zelda,
-        session: {}
-      };
+      req = { body: zelda };
     });
 
-    it('should persist a game and add it to the session', function(done) {
-      res = {json: function() {}};
+    it('should persist a game', function(done) {
+      res = {
+        json: function() {
+        Game.count().then(function(count) {
+          expect(count).to.equal(1);
+          done();
+        }).catch(function(err) {
+          done(err);
+        });
+        }
+      };
      
       gameRoutes.createGame(req, res);
-      Game.count().then(function(count) {
-        expect(count).to.equal(1);
-        expect(req.session.games[0]).to.deep.equal(zelda);
-        done();
-      }).catch(function(err) {
-        done(err);
-      });
     });
 
     it('should respond with json of the new post', function(done) {
+      var gameCreateStub;
       res = {json: function(gameJSON) {
-        expect(gameJSON).to.equal(zelda);
+        gameCreateStub.restore();
         done();
       }};
 
-      sinon.stub(Game, 'create').returns(when(zelda));
+      gameCreateStub = sinon.stub(Game, 'create').returns(when(zelda));
       gameRoutes.createGame(req, res);
+    });
+
+    it('should respond with json of any errors that occur', function(done) {
+      res = {
+        status: function(s) {
+          if(s === 400) {
+            return this;
+          }
+        },
+      
+        json: function(errors) {
+          expect(errors[0].message).to.equal('Game already added.');
+          done();
+        }
+      };
+
+      Game.create(zelda).then(function() {
+        gameRoutes.createGame(req, res);
+      });
     });
   });
 
   describe('#showGames', function() {
-    it('should return games from the database and set the games in the session', function(done) {
+    it('should return games from the database', function(done) {
       var findAllStub;
-      req = {session: {}};
+      req = {};
       res = {json: function(gamesJSON) {
         expect(gamesJSON).to.equal(games);
-        expect(req.session.games).to.equal(games);
         findAllStub.restore();
         done();
       }};
 
       findAllStub = sinon.stub(Game, 'findAll').returns(when(games));
-      gameRoutes.showGames(req, res);
-    });
-
-
-    it('should use the games in the session if it exists', function(done) {
-      var gameApiMock = sinon.mock(Game);
-      gameApiMock.expects('findAll').never();
-
-      req = { session: {games: games}};
-      res = {json: function(gamesJSON) {
-        gameApiMock.verify();
-        expect(gamesJSON).to.equal(games);
-        gameApiMock.restore();
-        done();
-      }};
-
-      gameRoutes = require('../../routes/games');
       gameRoutes.showGames(req, res);
     });
   });

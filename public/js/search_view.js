@@ -1,15 +1,22 @@
-var SearchView = function() {
+var $ = require('jquery');
+var _ = require('underscore');
+var Spinner = require('spin.js');
+var GamesIndexView = require('./games_index_view');
+
+module.exports = SearchView;
+
+function SearchView() {
 var gamesIndexView;
 
   var myGamesLink = $('#myGames');
   myGamesLink.click(function() {
     gamesIndexView = new GamesIndexView();
   });
-  
+
   var gamesBox = $('#gamesBox');
   var searchBar = $('input')[0];
   var template = _.template('<li><%= name %><img src = "<%= thumb_url %>" class = "vg-thumbnail">' +
-      '<button class = "btn btn-success add" id = "add<%= id %>">+</button>' + 
+      '<button class = "btn btn-success add" id = "add<%= id %>">+</button>' +
       '</li>');
 
   var searchTimeout;
@@ -34,12 +41,13 @@ var gamesIndexView;
                 var name = r.name;
                 var image = r.image;
                 var image_url;
+                var thumb_url;
 
-                if(image) { 
+                if(image) {
                   image_url = image.small_url;
                   thumb_url = image.thumb_url;
                 }
-        
+
                 gamesBox.append( template({name: name, image_url: image_url, thumb_url: thumb_url, id: id}));
                 $('body').on('click', '#add' + id, function() {
                   searchView.addGame({name: name, imageUrl: image_url, giantBombApiId: id});

@@ -2,3 +2,5 @@ secrets.json
 *.sw*
 node_modules/
 db/*.sqlite
+public/js/bundle.js
+test/views/bundle.js
