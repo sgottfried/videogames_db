@@ -1,6 +1,8 @@
+var $ = require('jquery');
 var GamesIndexView = require('../../public/js/games_index_view');
 
 var indexView, xhr, server, requests;
+var gamesBox = $('#gamesBox')
 
 describe('GamesIndexView', function() {
   beforeEach(function() {

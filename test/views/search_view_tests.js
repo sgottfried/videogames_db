@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var SearchView = require('../../public/js/search_view');
 
 var searchView, gamesBox, server, xhr, requests;
