@@ -5,9 +5,10 @@ var Routes = {
   
   // POST /games
   createGame: function(req, res) {
-    var name = req.body.name;
-    var giantBombApiId = req.body.giantBombApiId;
-    var imageUrl = req.body.imageUrl;
+    var game = req.body;
+    var name = game.name;
+    var giantBombApiId = game.giantBombApiId.toString();
+    var imageUrl = game.imageUrl;
 
     Game.create({name: name, giantBombApiId: giantBombApiId, imageUrl: imageUrl}).then(function(game) {
       res.json(game);

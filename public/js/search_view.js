@@ -51,7 +51,6 @@ var gamesIndexView;
                 gamesBox.append( template({name: name, image_url: image_url, thumb_url: thumb_url, id: id}));
                 $('body').on('click', '#add' + id, function() {
                   searchView.addGame({name: name, imageUrl: image_url, giantBombApiId: id});
-                  gamesIndexView = new GamesIndexView();
                 });
               });
             }
@@ -59,10 +58,17 @@ var gamesIndexView;
   };
 
   this.addGame = function(game) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/games');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(game));
+    $('body').off('click');
+    $.ajax({
+            url: '/games',
+            data: JSON.stringify(game),
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json',
+            type: 'POST',
+            success: function() {
+             gamesIndexView = new GamesIndexView();
+           }
+    });
   };
 
   var that = this;
