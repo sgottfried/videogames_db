@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var API = require('../../lib/bomb_api');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var models = require('../../models');
 var Platform = models.Platform;

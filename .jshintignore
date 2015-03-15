@@ -3,5 +3,6 @@ db
 node_modules
 npm-debug.log
 public/vendor
+public/js/bundle.js
 test/views/vendor
 test/views/bundle.js

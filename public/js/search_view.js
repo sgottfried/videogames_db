@@ -1,3 +1,5 @@
+'use strict';
+
 var $ = require('jquery');
 var _ = require('underscore');
 var Spinner = require('spin.js');
@@ -73,9 +75,9 @@ var gamesIndexView;
 
   var that = this;
   searchBar.addEventListener('input', function() {
-    if (searchTimeout != undefined) {
+    if (searchTimeout !== undefined) {
       clearTimeout(searchTimeout);
     }
-    searchTimeout = setTimeout(function() { that.getResults(searchBar.value)}, 330);
+    searchTimeout = setTimeout(function() { that.getResults(searchBar.value); }, 330);
   });
-};
+}

@@ -1,3 +1,5 @@
+'use strict';
+
 var gameRoutes = require('../../routes/games');
 
 var chai = require('chai');

@@ -1,3 +1,5 @@
+'use strict';
+
 var $ = require('jquery');
 var _ = require('underscore');
 
@@ -16,10 +18,10 @@ function GamesIndexView() {
       gamesBox.html('<div class = "container" id = "container"></div>');
       var rowCounter = 0;
       var columnCounter = 0;
+      var container = $('#container');
       games.forEach(function(g) {
-        if(columnCounter == 0) {
+        if(columnCounter === 0) {
           rowCounter += 1;
-          container = $('#container');
           container.append('<div id = "row' + rowCounter + '" class = "row"></div>');
         }
 
@@ -31,4 +33,4 @@ function GamesIndexView() {
       gamesBox.append('</div>');
     }
   });
-};
+}

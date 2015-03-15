@@ -1,3 +1,5 @@
+'use strict';
+
 var secrets = require('./secrets.json');
 var request = require('request');
 var express = require('express');
@@ -7,7 +9,7 @@ var API = require('./lib/bomb_api');
 var models = require('./models');
 var gamesRoutes = require('./routes/games');
 
-var bomb = new API(secrets['api_key']);
+var bomb = new API(secrets.api_key);
 
 var app = express();
 app.use(express.static(__dirname + '/public'));

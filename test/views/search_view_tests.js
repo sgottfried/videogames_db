@@ -1,3 +1,5 @@
+'use strict';
+
 var $ = require('jquery');
 var SearchView = require('../../public/js/search_view');
 
@@ -57,6 +59,6 @@ describe('SearchView', function() {
 
   afterEach(function() {
     xhr.restore();
-    if(server) { server.restore() };
+    if(server) { server.restore(); }
   });
 });

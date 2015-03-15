@@ -1,8 +1,10 @@
+'use strict';
+
 var $ = require('jquery');
 var GamesIndexView = require('../../public/js/games_index_view');
 
 var indexView, xhr, server, requests;
-var gamesBox = $('#gamesBox')
+var gamesBox = $('#gamesBox');
 
 describe('GamesIndexView', function() {
   beforeEach(function() {
@@ -39,7 +41,7 @@ describe('GamesIndexView', function() {
 
   afterEach(function() {
     xhr.restore();
-    if(server) { server.restore() };
+    if(server) { server.restore(); }
   });
 
   after(function() {
