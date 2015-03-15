@@ -2,13 +2,13 @@
 
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.addColumn('games', 'imageUrl', DataTypes.STRING);
+    migration.addColumn('Games', 'imageUrl', DataTypes.STRING);
     // add altering commands here, calling 'done' when finished
     done();
   },
 
   down: function(migration, DataTypes, done) {
-    migration.removeColumn('games', 'imageUrl');
+    migration.removeColumn('Games', 'imageUrl');
     // add reverting commands here, calling 'done' when finished
     done();
   }

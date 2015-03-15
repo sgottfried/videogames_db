@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable('games',
+    migration.createTable('Games',
         {
           id: {
             type: DataTypes.INTEGER,
@@ -25,7 +25,7 @@ module.exports = {
 
   down: function(migration, DataTypes, done) {
     // add reverting commands here, calling 'done' when finished
-    migration.dropTable('games');
+    migration.dropTable('Games');
     done();
   }
 };

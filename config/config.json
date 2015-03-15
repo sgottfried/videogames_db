@@ -1,14 +1,15 @@
 {
   "development": {
-    "database": "games",
-    "dialect": "sqlite",
-    "storage": "db/games.development.sqlite"
+    "database": "videogames_db_development",
+    "dialect": "postgres",
+    "port": 5432
   },
   "test": {
-    "database": "games",
-    "dialect": "sqlite",
-    "storage": "db/games.test.sqlite",
-    "logging": false
+    "database": "videogames_db_test",
+    "username": "sam",
+    "dialect": "postgres",
+    "logging": false,
+    "port": 5432
   },
   "production": {
     "database": "games",
