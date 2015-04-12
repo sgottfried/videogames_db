@@ -12,8 +12,9 @@
     "port": 5432
   },
   "production": {
-    "database": "games",
-    "dialect": "sqlite",
-    "storage": "db/games.sqlite"
+    "database": "videogames_db",
+    "username": "postgres",
+    "dialect": "postgres",
+    "port": 5432
   }
 }
