@@ -12,6 +12,27 @@ To get set up, you will need a `secrets.json` file in the root directory of the 
 }
 ```
 
+You will also need to create a `config/` subdirectory with a `config.json` file that looks like this:
+
+```js
+{
+  "development": {
+    "database": "videogames_db_development",
+    "dialect": "postgres",
+    "port": 5432
+  },
+  "test": {
+    "database": "videogames_db_test",
+    "dialect": "postgres",
+    "logging": false,
+    "port": 5432
+  }
+}
+```
+
+and start Postgres.
+
+
 You will then need to run:
 
 ```
