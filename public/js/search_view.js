@@ -60,7 +60,7 @@ var gamesIndexView;
   };
 
   this.addGame = function(game) {
-    $('body').off('click');
+    $('#add' + game.giantBombApiId).parent().remove();
     $.ajax({
             url: '/games',
             data: JSON.stringify(game),
@@ -69,7 +69,11 @@ var gamesIndexView;
             type: 'POST',
             success: function() {
              gamesIndexView = new GamesIndexView();
-           }
+            },
+            error: function(e) {
+              console.log(e.responseText);
+            }
+
     });
   };
 

@@ -36,7 +36,8 @@ describe('SearchView', function() {
           200,
           {"Content-Type": "application/json"},
           JSON.stringify({results: [{name: "The Legend of Zelda", image: { thumb_url: "http://static.giantbomb.com/uploads/scale_avatar/0/26/10169-legendofzelda-goldbox.png"}, id: "1"}]})
-        ]);
+        ]
+      );
 
       searchView.getResults('zelda');
       server.respond();
@@ -55,6 +56,39 @@ describe('SearchView', function() {
       expect(requests[0].url).to.equal('/games');
       expect(requests[0].requestBody).to.equal(JSON.stringify(game));
     });
+
+    it('should remove the add button when a game cannot be added', function() {
+      server = sinon.fakeServer.create();
+      server.respondWith('POST', '/games',
+        [
+          400,
+          {'Content-Type': 'application/json'},
+          JSON.stringify(
+            [
+              {
+                'message':'Game already added.',
+                'type':'Validation error',
+                'path':'giantBombApiId',
+                'value':
+                  {
+                    'cause':{},
+                    'isOperational':true
+                  },
+                 '__raw': {'cause':{},'isOperational':true}
+              }
+            ]
+          )
+        ]
+        );
+
+      $('#gamesBox').html('<li><button class = "add" id = "add1"></button></li>');
+      var game = {name: "The Legend of Zelda", giantBombApiId: 1};
+      searchView.addGame(game);
+      server.respond();
+
+      expect($('li').length).to.equal(0);
+    });
+
   });
 
   afterEach(function() {
