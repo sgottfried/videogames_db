@@ -1,6 +1,7 @@
 'use strict';
 
-var secrets = require('./secrets.json');
+var port = process.env.PORT || 3000;
+
 var request = require('request');
 var express = require('express');
 var session = require('express-session');
@@ -9,7 +10,7 @@ var API = require('./lib/bomb_api');
 var models = require('./models');
 var gamesRoutes = require('./routes/games');
 
-var bomb = new API(secrets.api_key);
+var bomb = new API(process.env.GIANT_BOMB_API_KEY);
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
@@ -35,5 +36,5 @@ app.get('/games', gamesRoutes.showGames);
 
 
 
-app.listen(3000);
-console.log("Listening on port 3000");
+app.listen(port);
+console.log('Listening on port ' + port);
