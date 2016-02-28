@@ -1,5 +1,6 @@
-input { 
-  margin-left: 400px;
+#input-box { 
+  margin: 0 auto;
+  max-width:600px;
 }
 
 #gamesBox { 
