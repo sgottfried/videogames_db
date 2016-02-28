@@ -4,36 +4,18 @@ It is implemented as a Single Page App in Express, using Mocha for front-end and
 
 Users can search the GiantBomb API for games that they want to add to a collection, add the games to the collection, and view the collection.
 
-To get set up, you will need a `secrets.json` file in the root directory of the project that contains the following:
+App is currently hosted on Heroku at https://videogames-db.herokuapp.com/.
 
-```js
-{
-        "api_key": "YOUR GIANT BOMB API KEY"
-}
+**Please do not add anything strange, since there is currently no way to delete games from the app.**
+
+To get set up, you will need a GiantBomb API key [here](http://www.giantbomb.com/api/).
+Then, set up an environment variable like this:
+
+```
+echo "export GIANT_BOMB_API_KEY= <YOUR KEY>" >> ~/.bash_profile
 ```
 
-You will also need to create a `config/` subdirectory with a `config.json` file that looks like this:
-
-```js
-{
-  "development": {
-    "database": "videogames_db_development",
-    "dialect": "postgres",
-    "port": 5432
-  },
-  "test": {
-    "database": "videogames_db_test",
-    "dialect": "postgres",
-    "logging": false,
-    "port": 5432
-  }
-}
-```
-
-and start Postgres.
-
-
-You will then need to run:
+After starting Postgres, you will then need to run:
 
 ```
 npm install -g sequelize-cli
