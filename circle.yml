@@ -2,11 +2,11 @@ machine:
   node:
     version: 5.6.0
 database:
-  override
+  override:
     - createdb videogames_db_test
     - sequelize db:migrate
 deployment:
   production:
     branch: master
     heroku:
-      appname: videogames_db
+      appname: videogames-db
