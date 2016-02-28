@@ -1,4 +1,6 @@
 # Videogames DB
+[![Circle CI](https://circleci.com/gh/sgottfried/videogames_db/tree/master.svg?style=svg)](https://circleci.com/gh/sgottfried/videogames_db/tree/master)
+
 Videogames DB is a video game database that hits the GiantBomb API to search for games that the user owns.
 It is implemented as a Single Page App in Express, using Mocha for front-end and backend tests.  It also uses the Sequelize ORM.
 
