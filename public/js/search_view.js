@@ -26,6 +26,7 @@ var gamesIndexView;
   var searchView = this;
   this.getResults = function(query) {
     gamesBox.attr('class', 'text-right');
+    $('body').off('click');
     gamesBox.html('');
     var spinner = new Spinner().spin();
     gamesBox.append(spinner.el);
