@@ -6,8 +6,6 @@ Users can search the GiantBomb API for games that they want to add to a collecti
 
 App is currently hosted on Heroku at https://videogames-db.herokuapp.com/.
 
-**Please do not add anything strange, since there is currently no way to delete games from the app.**
-
 To get set up, you will need a GiantBomb API key [here](http://www.giantbomb.com/api/).
 Then, set up an environment variable like this:
 
