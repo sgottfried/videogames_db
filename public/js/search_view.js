@@ -71,7 +71,7 @@ var gamesIndexView;
              gamesIndexView = new GamesIndexView();
             },
             error: function(e) {
-              console.log(e.responseText);
+              //do nothing right now
             }
 
     });
