@@ -18,6 +18,10 @@ describe('Game Routes', function() {
       mario = {name: "Super Mario Bros.", giantBombApiId: '2', imageUrl: 'http://test2.png'};
       games = [zelda, mario];
   });
+
+  afterEach(function() {
+    Game.destroy({where: {id: {$gt: 0}}});
+  });
   
   describe('#createGame', function() {
     before(function() {
@@ -85,7 +89,27 @@ describe('Game Routes', function() {
     });
   });
 
-  afterEach(function() {
-    Game.destroy({where: {id: {$gt: 0}}});
+  describe ('#destroyGame', function() {
+    it('should destroy a game', function(done) {
+      var game;
+      Game.create(zelda).then(function(createdGame) {
+        game = createdGame;
+        req = { 
+          params: {
+            id: game.id 
+          }
+        };
+        res = { 
+          json: function(response) {
+            expect(response.success).to.equal(true);
+            Game.count().then(function(count) {
+              expect(count).to.equal(0);
+              done();
+            });
+          }
+        };
+        gameRoutes.destroyGame(req, res);
+      });
+    });
   });
 });

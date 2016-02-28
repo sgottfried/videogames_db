@@ -24,6 +24,18 @@ var Routes = {
       Game.findAll().then(function(games) {
         res.json(games);
       });
+  },
+
+  // Delete /games/:id
+
+  destroyGame: function(req, res) {
+    var game = Game.findById(req.params.id).then(function(game) {
+      if(game !== undefined) {
+        game.destroy().then(function() {
+          res.json({success: true });
+        });
+      }
+    });
   }
 };
 

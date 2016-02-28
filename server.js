@@ -33,6 +33,7 @@ app.get('/search', function(req, res) {
 
 app.post('/games', gamesRoutes.createGame);
 app.get('/games', gamesRoutes.showGames);
+app.delete('/games/:id', gamesRoutes.destroyGame);
 
 
 
