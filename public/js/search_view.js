@@ -51,7 +51,7 @@ var gamesIndexView;
                 }
 
                 gamesBox.append( template({name: name, image_url: image_url, thumb_url: thumb_url, id: id}));
-                $('body').on('click', '#add' + id, function() {
+                $('#add' + id).click(function() {
                   searchView.addGame({name: name, imageUrl: image_url, giantBombApiId: id});
                 });
               });
