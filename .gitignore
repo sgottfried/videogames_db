@@ -4,3 +4,5 @@ node_modules/
 db/*.sqlite
 public/js/bundle.js
 test/views/bundle.js
+coverage
+tags

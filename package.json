@@ -10,7 +10,7 @@
     "db:create": "createdb videogames_db_development && createdb videogames_db_test",
     "db:migrate": "NODE_ENV=test sequelize db:migrate && sequelize db:migrate",
     "watch": "NODE_ENV=test mocha -w test/api test/models test/routes",
-    "test": "NODE_ENV=test mocha test/api test/models test/routes && mocha-phantomjs test/views/view_tests.html",
+    "test": "NODE_ENV=test ./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha test/api test/models test/routes && mocha-phantomjs test/views/view_tests.html -- -R spec",
     "pretest": "npm run build:test",
     "prestart": "npm run build"
   },
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "istanbul": "^0.4.2",
     "mocha": "^2.1.0",
     "mocha-phantomjs": "*",
     "nock": "^7.2.2",
